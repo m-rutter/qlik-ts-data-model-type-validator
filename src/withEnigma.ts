@@ -1,36 +1,48 @@
-export const withEnigma = async (app: EngineAPI.IApp): Promise<any> => {
-    const fieldListObject: EngineAPI.IFieldListObject = await app.createSessionObject(
-        {
-            qFieldListDef: {
-                qShowHidden: false,
-                qShowSemantic: false,
-                qShowSrcTables: false,
-                qShowSystem: false,
-            },
+type QlikFieldIdents = string[];
+type QlikVariableIdents = string[];
+
+export async function withEnigma(
+    app: EngineAPI.IApp,
+): Promise<[QlikFieldIdents, QlikVariableIdents]> {
+    const [fieldListObject, variableListObj]: [
+        EngineAPI.IFieldListObject,
+        EngineAPI.IVariableListObject
+    ] = await Promise.all([
+        app.createSessionObject({
+            qFieldListDef: {},
             qInfo: { qId: '', qType: 'FieldList' },
-        },
-    );
-
-    const variableListObj = await app.createSessionObject({
-        qInfo: {
-            qId: 'VariableList',
-            qType: 'VariableList',
-        },
-        qVariableListDef: {
-            qData: {
-                tags: '/tags',
+        }),
+        app.createSessionObject({
+            qInfo: {
+                qId: 'VariableList',
+                qType: 'VariableList',
             },
-            qShowConfig: true,
-            qShowReserved: true,
-            qType: 'variable',
-        },
-    });
+            qVariableListDef: {
+                qData: {
+                    tags: '/tags',
+                },
+                qShowConfig: true,
+                qShowReserved: true,
+                qType: 'VariableList',
+            },
+        }),
+    ]);
 
-    const variableLayout = (await variableListObj.getLayout()) as any;
-    const fieldLayout = (await fieldListObject.getLayout()) as any;
+    // TODO: Make PR to fix typescript definitions
+    const [fieldLayout, variableLayout]: [any, any] = await Promise.all([
+        fieldListObject.getLayout(),
+        variableListObj.getLayout(),
+    ]);
 
     app.destroySessionObject(variableListObj.id);
     app.destroySessionObject(fieldListObject.id);
 
-    return;
-};
+    const fieldIdentifiers: string[] = fieldLayout.qFieldList.qItems.map(
+        (f: { qName: string }) => f.qName,
+    );
+    const variableIdentifiers: string[] = variableLayout.qVariableList.qItems.map(
+        (v: { qName: string }) => v.qName as string,
+    );
+
+    return [fieldIdentifiers, variableIdentifiers];
+}
