@@ -78,3 +78,8 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+# lock files cannot be published to npm reg
+package-lock.json
+
+/lib

@@ -1,25 +1,43 @@
 {
-  "name": "qlik-ts-data-model-type-validator",
-  "version": "0.1.0",
-  "description": "Helps enable compile and run time type checking in your typescript based Qlik engine-api/core and Qlik Sense Mashup projects",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/m-rutter/qlik-ts-data-model-type-validator.git"
-  },
-  "keywords": [
-    "qlik",
-    "qlik-engine",
-    "qlik-sense",
-    "typescript"
-  ],
-  "author": "Michael Rutter <michael.john.rutter@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/m-rutter/qlik-ts-data-model-type-validator/issues"
-  },
-  "homepage": "https://github.com/m-rutter/qlik-ts-data-model-type-validator#readme"
+    "name": "qlik-ts-data-model-type-validator",
+    "version": "0.1.0",
+    "description": "Helps enable compile and run time type checking in your typescript based Qlik engine-api/core and Qlik Sense Mashup projects",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "files": [
+        "lib/**/*"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\" \"src/**/*.json\"",
+        "lint": "tslint -p tsconfig.json",
+        "test": "jest",
+        "prepare": "npm run build",
+        "prepublishOnly": "npm test && npm run lint"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/m-rutter/qlik-ts-data-model-type-validator.git"
+    },
+    "keywords": [
+        "qlik",
+        "qlik-engine",
+        "qlik-sense",
+        "typescript"
+    ],
+    "author": "Michael Rutter <michael.john.rutter@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/m-rutter/qlik-ts-data-model-type-validator/issues"
+    },
+    "homepage": "https://github.com/m-rutter/qlik-ts-data-model-type-validator#readme",
+    "devDependencies": {
+        "@types/jest": "^23.3.10",
+        "jest": "^23.6.0",
+        "prettier": "^1.15.3",
+        "ts-jest": "^23.10.5",
+        "tslint": "^5.12.0",
+        "tslint-config-prettier": "^1.17.0",
+        "typescript": "^3.2.2"
+    }
 }
