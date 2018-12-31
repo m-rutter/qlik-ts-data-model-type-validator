@@ -39,5 +39,9 @@
         "tslint": "^5.12.0",
         "tslint-config-prettier": "^1.17.0",
         "typescript": "^3.2.2"
+    },
+    "dependencies": {
+        "@types/qlik-engineapi": "^12.67.6",
+        "@types/qlik-visualizationextensions": "^4.0.2"
     }
 }
