@@ -1,0 +1,25 @@
+{
+  "name": "qlik-ts-data-model-type-validator",
+  "version": "0.1.0",
+  "description": "Helps enable compile and run time type checking in your typescript based Qlik engine-api/core and Qlik Sense Mashup projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m-rutter/qlik-ts-data-model-type-validator.git"
+  },
+  "keywords": [
+    "qlik",
+    "qlik-engine",
+    "qlik-sense",
+    "typescript"
+  ],
+  "author": "Michael Rutter <michael.john.rutter@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/m-rutter/qlik-ts-data-model-type-validator/issues"
+  },
+  "homepage": "https://github.com/m-rutter/qlik-ts-data-model-type-validator#readme"
+}
