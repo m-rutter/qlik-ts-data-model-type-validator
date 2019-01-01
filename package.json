@@ -1,7 +1,7 @@
 {
-    "name": "qlik-ts-variable-n-field-ident-checker",
+    "name": "qlik-ts-ident-checker",
     "version": "0.1.0",
-    "description": "Helps enable compile and run time type checking in your typescript based Qlik engine-api/core and Qlik Sense Mashup projects",
+    "description": "Helps enable data model specific compile and run time type checking when using Qlik Fields and Variables in your Engine-API or Mashup typescript projects",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
     "files": [
