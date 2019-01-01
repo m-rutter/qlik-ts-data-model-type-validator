@@ -1,5 +1,4 @@
 # qlik-ts-ident-checker
-[![Build Status](https://travis-ci.com/m-rutter/m-rutter.github.io.svg?branch=zola)](https://travis-ci.com/m-rutter/m-rutter.github.io)
 
 Helps enable load script specific compile and run time type checking when using Qlik fields and variables in your Engine-API or Mashup typescript projects
 
