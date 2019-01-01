@@ -10,8 +10,8 @@ and this project adheres to
 
 ### Added
 
-    - Documentation
-    - Experimental Capabilities (Mashup) API support. It will probably work.
+-   Documentation
+-   Experimental Capabilities (Mashup) API support. It will probably work.
 
 ## [0.2.0] - 2019-01-01
 
