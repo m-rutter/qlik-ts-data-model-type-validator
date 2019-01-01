@@ -1,7 +1,7 @@
 {
     "name": "qlik-ts-ident-checker",
     "description": "Helps enable data model specific compile and run time type checking when using Qlik Fields and Variables in your Engine-API or Mashup typescript projects",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "author": "Michael Rutter <michael.john.rutter@gmail.com>",
     "license": "MIT",
     "main": "lib/index.js",
