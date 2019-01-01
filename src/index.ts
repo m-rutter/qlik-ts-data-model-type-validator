@@ -89,7 +89,7 @@ function createReport(
     const inEnumNotInQlik = [...difference(enumSet, qlikSet)];
 
     return {
-        matching: false,
+        matching: inQlikNotInEnum.length === 0 && inEnumNotInQlik.length === 0,
         newEnumString: generateStringEnum(qlikIdentifiers, kind),
         identifiersInQlik: qlikIdentifiers,
         identifiersInEnum: enumIdentifiers,
