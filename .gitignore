@@ -79,6 +79,9 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
+# rollup cache
+.rpt2_cache
+
 # lock files cannot be published to npm reg
 package-lock.json
 

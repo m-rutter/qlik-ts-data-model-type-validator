@@ -1,16 +1,18 @@
 {
     "name": "qlik-ts-ident-checker",
     "description": "Helps enable data model specific compile and run time type checking when using Qlik Fields and Variables in your Engine-API or Mashup typescript projects",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "author": "Michael Rutter <michael.john.rutter@gmail.com>",
     "license": "MIT",
-    "main": "lib/index.js",
+    "main": "lib/index.umd.js",
+    "module": "lib/index.esm.js",
     "types": "lib/index.d.ts",
     "files": [
-        "lib/**/*"
+        "lib/index.*.js",
+        "lib/index.d.ts"
     ],
     "scripts": {
-        "build": "tsc",
+        "build": "rollup -c",
         "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\" \"src/**/*.json\"",
         "test": "jest",
         "prepare": "npm run build",
@@ -32,13 +34,16 @@
     "homepage": "https://github.com/m-rutter/qlik-ts-data-model-type-validator#readme",
     "devDependencies": {
         "@types/jest": "^23.3.10",
+        "@types/qlik-engineapi": "^12.67.6",
+        "@types/qlik-visualizationextensions": "^4.0.2",
         "jest": "^23.6.0",
         "prettier": "^1.15.3",
+        "rollup": "^1.0.0",
+        "rollup-plugin-typescript2": "^0.18.1",
         "ts-jest": "^23.10.5",
         "tslint": "^5.12.0",
         "tslint-config-prettier": "^1.17.0",
-        "typescript": "^3.2.2",
-        "@types/qlik-engineapi": "^12.67.6",
-        "@types/qlik-visualizationextensions": "^4.0.2"
-    }
+        "typescript": "^3.2.2"
+    },
+    "dependencies": {}
 }
