@@ -3,18 +3,14 @@ import { withCapabilities } from './withCapabilities';
 import { generateStringEnum } from './generateStringEnum';
 
 /**
- * Interface repersenting a typescript string enum
+ * Result of validation checks
  */
-interface StringEnum {
-    [key: string]: string;
+interface IdentifierCheckResult {
+    fields: IdentifierKindInfo;
+    variables: IdentifierKindInfo;
 }
 
-interface DataModelCheckResult {
-    fields: IdentifierInfo;
-    variables: IdentifierInfo;
-}
-
-interface IdentifierInfo {
+interface IdentifierKindInfo {
     /** If true, then optionally provided enum matches current data model */
     matching: boolean;
     /** Suggested new enum definition that matches current data model */
@@ -30,18 +26,27 @@ interface IdentifierInfo {
 }
 
 /**
+ * Type repersenting a typescript string enum
+ */
+type StringEnum<K extends string> =
+    | Record<K, string>
+    | {
+          [key: string]: string;
+      };
+
+/**
  *
  * @param appType indicate whether using the Engine API via enigma or the Capabilities API
  * @param app an app instance that corresponds to the appType
  * @param fields optionally provide an enum repersenting the fields available in the data model to validate
  * @param variables optionally provide an enum repersenting the variables available in the data model to validate
  */
-export async function checkDataModelIdentifiers(
+export async function checkDataModelIdentifiers<K extends string>(
     appType: 'enigma' | 'capabilities',
     app: any,
-    fields: StringEnum = {},
-    variables: StringEnum = {},
-): Promise<DataModelCheckResult> {
+    fields: StringEnum<K> = {},
+    variables: StringEnum<K> = {},
+): Promise<IdentifierCheckResult> {
     let qlikFieldIdentifiers: string[];
     let qlikVariableIdentifiers: string[];
 
@@ -81,7 +86,7 @@ function createReport(
     kind: 'Field' | 'Variable',
     qlikIdentifiers: string[],
     enumIdentifiers: string[],
-): IdentifierInfo {
+): IdentifierKindInfo {
     const qlikSet = new Set(qlikIdentifiers);
     const enumSet = new Set(enumIdentifiers);
 
