@@ -1,7 +1,9 @@
 {
     "name": "qlik-ts-ident-checker",
-    "version": "0.1.0",
     "description": "Helps enable data model specific compile and run time type checking when using Qlik Fields and Variables in your Engine-API or Mashup typescript projects",
+    "version": "0.1.0",
+    "author": "Michael Rutter <michael.john.rutter@gmail.com>",
+    "license": "MIT",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
     "files": [
@@ -16,7 +18,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/m-rutter/qlik-ts-data-model-type-validator.git"
+        "url": "git+https://github.com/m-rutter/qlik-ts-ident-checker.git"
     },
     "keywords": [
         "qlik",
@@ -24,8 +26,6 @@
         "qlik-sense",
         "typescript"
     ],
-    "author": "Michael Rutter <michael.john.rutter@gmail.com>",
-    "license": "MIT",
     "bugs": {
         "url": "https://github.com/m-rutter/qlik-ts-data-model-type-validator/issues"
     },
