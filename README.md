@@ -42,7 +42,7 @@ and:
 
 ```ts
 /* loadScriptIdentifiers.ts */
-import { checkDataModelIdentifiers } from 'qlik-ts-ident-checker';
+import { checkAppIdentifiers } from 'qlik-ts-ident-checker';
 
 // Field enum suggested from a previous run
 export enum Field {
@@ -58,12 +58,7 @@ export enum Variable {
 
 // Export function to validate the enums at runtime
 export async function validate(app: any) {
-    const result = await checkDataModelIdentifiers(
-        'enigma',
-        app,
-        Field,
-        Variable,
-    );
+    const result = await checkAppIdentifiers('enigma', app, Field, Variable);
 
     if (!result.fields.matching) {
         console.warn('Mismatch between qlik and project fields', result.fields);
@@ -147,10 +142,13 @@ declare type StringEnum<K extends string> =
  * @param fields optionally provide an enum repersenting the fields available in the data model to validate
  * @param variables optionally provide an enum repersenting the variables available in the data model to validate
  */
-export declare function checkDataModelIdentifiers<K extends string>(
+export declare function checkAppIdentifiers<
+    K1 extends string,
+    K2 extends string
+>(
     appType: 'enigma' | 'capabilities',
     app: any,
-    fields?: StringEnum<K>,
-    variables?: StringEnum<K>,
+    fields?: StringEnum<K1>,
+    variables?: StringEnum<K2>,
 ): Promise<IdentifierCheckResult>;
 ```

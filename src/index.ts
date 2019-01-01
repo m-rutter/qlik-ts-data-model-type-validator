@@ -41,11 +41,11 @@ type StringEnum<K extends string> =
  * @param fields optionally provide an enum repersenting the fields available in the data model to validate
  * @param variables optionally provide an enum repersenting the variables available in the data model to validate
  */
-export async function checkDataModelIdentifiers<K extends string>(
+export async function checkAppIdentifiers<K1 extends string, K2 extends string>(
     appType: 'enigma' | 'capabilities',
     app: any,
-    fields: StringEnum<K> = {},
-    variables: StringEnum<K> = {},
+    fields: StringEnum<K1> = {},
+    variables: StringEnum<K2> = {},
 ): Promise<IdentifierCheckResult> {
     let qlikFieldIdentifiers: string[];
     let qlikVariableIdentifiers: string[];
