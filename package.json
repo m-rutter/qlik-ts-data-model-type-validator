@@ -8,7 +8,8 @@
     "module": "lib/index.esm.js",
     "types": "lib/index.d.ts",
     "files": [
-        "lib/index.*.js",
+        "lib/index.umd.js",
+        "lib/index.esm.js",
         "lib/index.d.ts"
     ],
     "scripts": {
