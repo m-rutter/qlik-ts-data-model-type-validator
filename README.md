@@ -104,7 +104,7 @@ import { Variable } from './loadScriptIdentifiers.ts';
 const currentMonth = await app.evaluate(`$(${Variable.vCurrentMonth})`);
 ```
 
-## Type defintions (quick for reference)
+## Type defintions (for quick reference)
 
 ```ts
 /**
