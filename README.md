@@ -1,5 +1,7 @@
 # qlik-ts-ident-checker
 
+Helps enable load script specific compile and run time type checking when using Qlik fields and variables in your Engine-API or Mashup typescript projects
+
 ## Install
 
 ```sh
