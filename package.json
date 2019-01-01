@@ -10,10 +10,9 @@
     "scripts": {
         "build": "tsc",
         "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\" \"src/**/*.json\"",
-        "lint": "tslint -p tsconfig.json",
         "test": "jest",
         "prepare": "npm run build",
-        "prepublishOnly": "npm test && npm run lint"
+        "prepublishOnly": "npm test"
     },
     "repository": {
         "type": "git",
