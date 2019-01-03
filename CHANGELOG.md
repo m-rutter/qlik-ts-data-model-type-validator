@@ -17,7 +17,7 @@ and this project adheres to
     of two
 -   All enum identifers in the suggested definition are defined as strings to
     handle whitespace or non `a..z` & `A..Z` characters.
--   Added Cavet section to docs
+-   Added Caveat section to docs
 
 ### Fixed
 
