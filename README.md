@@ -17,7 +17,8 @@ yarn add qlik-ts-ident-checker
 A very small library (< 1KB gzipped + minified) with no dependencies that helps
 enable app specific compile and run time type checking for your typescript Qlik
 Engine-API/Core or Qlik Sense mashup projects. Can be used in plain javascript
-projects if you get a bit creative.
+projects if you get a bit creative (replace the string enums with plain
+objects).
 
 This library takes a reference to an Engine-API or Capabilities API app instance
 and:
@@ -36,6 +37,16 @@ and:
     highlighting necessary changes that need to be made to reflect the the new
     load script
 
+### Caveat
+
+-   The only variables it will check are those defined in the load script or
+    reserved by the system as script or system variables
+    -   Variables created during a session will not be counted
+-   Numeric field or variable identifiers will apppear with underscore padding
+    as identifers in typescript enums cannot be numeric.
+    -   The value they map to will remain unchanged.
+    -   e.g. `'_2000_' = '2000'`
+
 ## Suggested Usage
 
 ### Setup
@@ -44,15 +55,15 @@ and:
 /* loadScriptIdentifiers.ts */
 import { checkAppIdentifiers } from 'qlik-ts-ident-checker';
 
-// Field enum suggested from a previous run
+// Field enum suggested from a previous run, can be empty initially
 export enum Field {
-    UNIT_VALUE = 'UNIT_VALUE',
+    'UNIT VALUE' = 'UNIT VALUE',
     // ...
 }
 
-// Variable enum suggested from a previous run
+// Variable enum suggested from a previous run, can be empty initially
 export enum Variable {
-    vCurrentMonth = 'vCurrentMonth',
+    'vCurrentMonth' = 'vCurrentMonth',
     // ...
 }
 

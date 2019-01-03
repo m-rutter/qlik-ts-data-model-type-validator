@@ -13,9 +13,9 @@ describe('tests for enum generation', () => {
         // prettier-ignore
         const expectedResult = String.raw
 `enum Field {
-    CALENDAR_MONTH_ID = 'CALENDAR_MONTH_ID',
-    DATA_FLAG = 'DATA_FLAG',
-    NUMERATOR_VALUE = 'NUMERATOR_VALUE'
+    'CALENDAR_MONTH_ID' = 'CALENDAR_MONTH_ID',
+    'DATA_FLAG' = 'DATA_FLAG',
+    'NUMERATOR_VALUE' = 'NUMERATOR_VALUE'
 }`;
 
         expect(fieldEnumString).toEqual(expectedResult);
@@ -34,10 +34,10 @@ describe('tests for enum generation', () => {
         // prettier-ignore
         const expectedResult = String.raw
 `enum Field {
-    CALENDAR_MONTH_ID = 'CALENDAR_MONTH_ID',
-    DATA_FLAG = 'DATA_FLAG',
-    __2000__ = '2000',
-    NUMERATOR_VALUE = 'NUMERATOR_VALUE'
+    'CALENDAR_MONTH_ID' = 'CALENDAR_MONTH_ID',
+    'DATA_FLAG' = 'DATA_FLAG',
+    '_2000_' = '2000',
+    'NUMERATOR_VALUE' = 'NUMERATOR_VALUE'
 }`;
 
         expect(fieldEnumString).toEqual(expectedResult);

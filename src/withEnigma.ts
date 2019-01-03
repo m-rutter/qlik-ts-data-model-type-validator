@@ -18,12 +18,10 @@ export async function withEnigma(
                 qType: 'VariableList',
             },
             qVariableListDef: {
-                qData: {
-                    tags: '/tags',
-                },
+                qData: {},
                 qShowConfig: true,
                 qShowReserved: true,
-                qType: 'VariableList',
+                qType: 'variable',
             },
         }),
     ]);
@@ -40,9 +38,12 @@ export async function withEnigma(
     const fieldIdentifiers: string[] = fieldLayout.qFieldList.qItems.map(
         (f: { qName: string }) => f.qName,
     );
-    const variableIdentifiers: string[] = variableLayout.qVariableList.qItems.map(
-        (v: { qName: string }) => v.qName as string,
-    );
+    const variableIdentifiers: string[] = variableLayout.qVariableList.qItems
+        .filter(
+            (v: EngineAPI.INxVariableListItem) =>
+                v.qIsScriptCreated || v.qIsConfig || v.qIsReserved,
+        )
+        .map((v: EngineAPI.INxVariableListItem) => v.qName);
 
     return [fieldIdentifiers, variableIdentifiers];
 }

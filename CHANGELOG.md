@@ -6,6 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0] - 2019-01-03
+
+### Changed
+
+-   Now only checks variables that are defined in the load script, or those that
+    are considered to be reserved system or load script variables. Session
+    variables are ignored.
+-   Numeric identifiers are padded by single underscores on either side instead
+    of two
+-   All enum identifers in the suggested definition are defined as strings to
+    handle whitespace or non `a..z` & `A..Z` characters.
+-   Added Cavet section to docs
+
+### Fixed
+
+-   Fixed Variable implementation with incorrect list definition
+-   Fixed Capabilities API impl - works now!
+
 ## [0.5.0] - 2019-01-01
 
 ### Changed

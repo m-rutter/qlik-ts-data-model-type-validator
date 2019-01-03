@@ -10,15 +10,16 @@ export function generateStringEnum(
 ): string {
     const enumEntries = [...identifiers.values()]
         .map(v => {
+            let identifier = v;
             // Typescript enums cannot have numeric members. Allowing numberic members
             // might cause collisions at runtume. Rather than choosing to
             // discard some qlik field or variable names I've opted to pad the
             // numeric identifier with underscores.
-            const identifier = Number.isNaN(Number.parseInt(v, 10))
-                ? v
-                : `__${v}__`;
+            if (!Number.isNaN(Number.parseInt(v, 10))) {
+                identifier = `_${v}_`;
+            }
 
-            return `${identifier} = '${v}'`;
+            return `'${identifier}' = '${v}'`;
         })
         .join(',\n    ');
 
