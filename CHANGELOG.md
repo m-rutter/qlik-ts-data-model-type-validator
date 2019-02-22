@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2019-02-22
+
+### Changed
+
+-   Now targets es5 ecmascript instead of es2017 so that the lib no longer needs
+    to go through an additional compilation step for browser targets
+    -   I don't believe that this is a breaking change as it only increases the
+        number of supported target environments
+-   Including source maps for both umd and esm builds
+-   Upgraded dev dependencies
+
 ## [1.0.0] - 2019-01-03
 
 ### Changed

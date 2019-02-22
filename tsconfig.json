@@ -1,14 +1,15 @@
 {
     "compilerOptions": {
-        "target": "es2017",
+        "target": "es5",
         "module": "es2015",
+        "lib": ["es2017", "dom"],
         "outDir": "lib",
         "declaration": true,
         "declarationDir": "typings",
         "strict": true,
         "removeComments": false,
-        "downlevelIteration": true,
-        "lib": ["es2017", "dom"]
+        "sourceMap": true,
+        "downlevelIteration": true
     },
     "include": ["src"],
     "exclude": [

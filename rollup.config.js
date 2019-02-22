@@ -7,14 +7,11 @@ export default {
     output: [
         {
             file: pkg.main,
+            name: 'qlik-ts-ident-checker',
             format: 'umd',
-            name: 'qlik-ts-ident-checker',
+            sourcemap: true,
         },
-        {
-            file: pkg.module,
-            format: 'esm',
-            name: 'qlik-ts-ident-checker',
-        },
+        { file: pkg.module, format: 'es', sourcemap: true },
     ],
     external: [
         ...Object.keys(pkg.dependencies || {}),
