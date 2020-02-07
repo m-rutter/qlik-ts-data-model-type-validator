@@ -1,4 +1,5 @@
 # qlik-ts-ident-checker
+
 [![](https://img.shields.io/npm/v/qlik-ts-ident-checker.svg)](https://www.npmjs.com/package/qlik-ts-ident-checker)
 
 Helps enable app specific compile and run time type checking when using Qlik
@@ -30,9 +31,6 @@ and:
 -   Can validate those enums at runtime to alert you to changes
     -   e.g. that a field or variable has been created or dropped by a change in
         the load script whether by design or by accident
-    -   "oh, I didn't realise that you were using that customer field. I
-        accidentally commented out that entire section of the load script. Sorry
-        for causing hours of fruitless debugging."
 -   If these enums are used in inline Qlik expressions within your project, then
     updating the enums will create compile time errors in `tsc`, thus
     highlighting necessary changes that need to be made to reflect the the new
