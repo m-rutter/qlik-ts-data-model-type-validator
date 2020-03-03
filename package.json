@@ -39,6 +39,7 @@
         "@types/jest": "^25.1.2",
         "@types/qlik-engineapi": "^12.67.6",
         "@types/qlik-visualizationextensions": "^4.0.2",
+        "fast-check": "^1.22.2",
         "jest": "^25.1.0",
         "prettier": "^1.15.3",
         "rollup": "^1.0.0",

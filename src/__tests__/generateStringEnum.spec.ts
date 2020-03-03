@@ -1,45 +1,36 @@
+import * as fc from 'fast-check';
+
 import { generateStringEnum } from '../generateStringEnum';
 
-describe('tests for enum generation', () => {
-    test('simple field enum test', () => {
-        const fieldSet = new Set([
-            'CALENDAR_MONTH_ID',
-            'DATA_FLAG',
-            'NUMERATOR_VALUE',
-        ]);
+describe('enum generation', () => {
+    test('keys match values for non-numeric inputs', () => {
+        const re = /[^a-zA-Z]/g;
 
-        const fieldEnumString = generateStringEnum(fieldSet, 'Field');
+        const nonNumericStr = fc.set(
+            fc.string().map(str => str.replace(re, '')),
+        );
 
-        // prettier-ignore
-        const expectedResult = String.raw
-`enum Field {
-    'CALENDAR_MONTH_ID' = 'CALENDAR_MONTH_ID',
-    'DATA_FLAG' = 'DATA_FLAG',
-    'NUMERATOR_VALUE' = 'NUMERATOR_VALUE'
-}`;
-
-        expect(fieldEnumString).toEqual(expectedResult);
+        fc.assert(
+            fc.property(nonNumericStr, items => {
+                const enumStr = generateStringEnum(items, 'Field');
+                for (const item of items) {
+                    expect(enumStr).toContain(`'${item}' = '${item}'`);
+                }
+            }),
+        );
     });
 
-    test('handle numeric identifiers', () => {
-        const fieldSet = new Set([
-            'CALENDAR_MONTH_ID',
-            'DATA_FLAG',
-            '2000',
-            'NUMERATOR_VALUE',
-        ]);
+    test('numeric inputs get padded', () => {
+        const numericStrs = fc.set(fc.nat().map(num => num.toString()));
 
-        const fieldEnumString = generateStringEnum(fieldSet, 'Field');
-
-        // prettier-ignore
-        const expectedResult = String.raw
-`enum Field {
-    'CALENDAR_MONTH_ID' = 'CALENDAR_MONTH_ID',
-    'DATA_FLAG' = 'DATA_FLAG',
-    '_2000_' = '2000',
-    'NUMERATOR_VALUE' = 'NUMERATOR_VALUE'
-}`;
-
-        expect(fieldEnumString).toEqual(expectedResult);
+        fc.assert(
+            fc.property(numericStrs, items => {
+                const enumStr = generateStringEnum(items, 'Field');
+                console.log(enumStr);
+                for (const item of items) {
+                    expect(enumStr).toContain(`'_${item}_' = '${item}'`);
+                }
+            }),
+        );
     });
 });
